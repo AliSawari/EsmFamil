@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
+import {Origin, About} from './components';
 
 function gebi(id) {
 	return document.getElementById(id);
@@ -16,11 +17,12 @@ class Hello extends Component {
   render(){
     return <div className="container">
 			<h1>Hello React</h1>
+			<Origin/>
+			<About/>
 		</div>
   }
 }
 
 Render(Hello);
 
-
-// adding few lines here
+require('./socket.js');
