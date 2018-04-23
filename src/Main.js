@@ -24,5 +24,3 @@ class Hello extends Component {
 }
 
 Render(Hello);
-
-require('./socket.js');
