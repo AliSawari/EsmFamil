@@ -6,11 +6,9 @@
   "author": "Ali Sawari @AliSawari",
   "license": "MIT",
   "scripts": {
-    "build-dev": "webpack -w --mode=development",
-    "build-pro": "webpack --mode=production",
-    "d": "npm run build-dev",
-    "p": "npm run build-pro",
-    "start": "npm run build-pro && node server.js"
+    "dev": "webpack -w --mode=development",
+    "pro": "webpack --mode=production",
+    "start": "npm run pro && node server.js"
   },
   "dependencies": {
     "babel-core": "^6.26.0",

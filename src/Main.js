@@ -10,17 +10,19 @@ const Render = C => {
 	return ReactDOM.render(<C/>, gebi('root'));
 }
 
-class Hello extends Component {
+class Main extends Component {
   constructor(props){
     super(props);
   }
   render(){
     return <div className="container">
 			<h1>Hello React</h1>
+			<br/>
+			<br/>
 			<Origin/>
 			<About/>
 		</div>
   }
 }
 
-Render(Hello);
+Render(Main);

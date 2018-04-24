@@ -11,10 +11,55 @@ const http = require('http'),
 app.use(express.static(`${__dirname}/public`));
 
 
+var users = [];
+
+function update(){
+  console.log(users);
+}
+
+function addUser(u) {
+  var toAdd = {
+    name: u,
+    id: users.length + 1,
+    joinedAt: Date.now()
+  }
+  users.push(toAdd);
+  console.log(`added ${u} to the db`);
+  update();
+}
+
+function find(name){
+  for(let x in users) {
+    if(name === users[x].name){
+      return true;
+    }
+  }
+}
+
+function remUser(name){
+  let f = find(name);
+  if(f){
+    var newU = users.filter((u) => {
+      return u.name != name;
+    });
+    users = newU;
+    console.log(`Removed ${name} from db`);
+    update();
+  }
+}
+
+
+
 IO.on('connection', (socket) => {
-  console.log(`connected client`);
+  let tempName;
+
+  socket.on('join', (name) => {
+    addUser(name);
+    tempName = name;
+  });
+
   socket.on('disconnect', () => {
-    console.log('client disconnected');
+    remUser(tempName);
   });
 });
 
