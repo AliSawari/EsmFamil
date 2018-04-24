@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import {Origin, About} from './components';
+import {Origin} from './components';
 
 const Render = C => {
 	return ReactDOM.render(<C/>, document.getElementById('root'));
@@ -15,7 +15,6 @@ class Main extends Component {
 			<h1>Esm Famil</h1>
 			<p>welcome to guess-the-name game</p><hr />
 			<Origin/>
-			<About/>
 		</div>
   }
 }

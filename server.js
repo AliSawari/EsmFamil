@@ -61,6 +61,10 @@ IO.on('connection', (socket) => {
   socket.on('disconnect', () => {
     remUser(tempName);
   });
+
+  setInterval(() => {
+    socket.emit('update', users);
+  }, 500);
 });
 
 // ROUTES HERE :
