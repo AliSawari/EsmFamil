@@ -24,7 +24,7 @@ function addUser(u) {
     joinedAt: Date.now()
   }
   users.push(toAdd);
-  console.log(`added ${u} to the db`);
+  console.log(`${u} joined the chat`);
   update();
 }
 
@@ -43,7 +43,7 @@ function remUser(name){
       return u.name != name;
     });
     users = newU;
-    console.log(`Removed ${name} from db`);
+    console.log(`${name} left the chat`);
     update();
   }
 }
@@ -62,6 +62,13 @@ IO.on('connection', (socket) => {
     remUser(tempName);
   });
 });
+
+// ROUTES HERE :
+
+app.get('/err', (req, res) => {
+  res.status(400).send('<h1>YOU MUST CHOOSE A NAME</h1>');
+});
+
 
 server.listen(port, (err) => {
   if(err) return console.error(err);

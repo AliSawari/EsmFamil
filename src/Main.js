@@ -2,12 +2,8 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import {Origin, About} from './components';
 
-function gebi(id) {
-	return document.getElementById(id);
-}
-
 const Render = C => {
-	return ReactDOM.render(<C/>, gebi('root'));
+	return ReactDOM.render(<C/>, document.getElementById('root'));
 }
 
 class Main extends Component {
@@ -16,9 +12,8 @@ class Main extends Component {
   }
   render(){
     return <div className="container">
-			<h1>Hello React</h1>
-			<br/>
-			<br/>
+			<h1>Esm Famil</h1>
+			<p>welcome to guess-the-name game</p><hr />
 			<Origin/>
 			<About/>
 		</div>
