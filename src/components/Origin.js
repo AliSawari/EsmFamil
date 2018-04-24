@@ -9,6 +9,14 @@ function getLocal(){
   return localStorage.getItem('name');
 }
 
+function find(name, userList){
+  for(let x in userList) {
+    if(name === userList[x].name){
+      return true;
+    }
+  }
+}
+
 class Origin extends Component {
   constructor(props){
     super(props);
@@ -26,16 +34,28 @@ class Origin extends Component {
   }
 
   componentWillMount(){
+    var {userList} = this.state;
     var name = getLocal();
     if(name){
-      socket.emit('join', name);
-      this.setState({name});
+      if(!find(name, userList)){
+        socket.emit('join', name);
+        this.setState({name});
+      } else {}
+      // socket.emit('join', name);
+      // this.setState({name});
     } else {
       var newName = prompt("please type your name...");
       if(newName){
-        socket.emit('join', newName);
-        this.setState({name: newName});
-        saveLocal(newName);
+        if(!find(newName, userList)){
+          socket.emit('join', newName);
+          this.setState({name: newName});
+          saveLocal(newName);
+        }
+        // socket.emit('join', newName);
+        // this.setState({name: newName});
+        // saveLocal(newName);
+      } else {
+        window.location.href = "/err";
       }
     }
   }
