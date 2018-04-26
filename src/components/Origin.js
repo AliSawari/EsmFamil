@@ -55,7 +55,7 @@ class Origin extends Component {
         // this.setState({name: newName});
         // saveLocal(newName);
       } else {
-        window.location.href = "/err";
+        window.location.href = "/err_choose_name";
       }
     }
   }

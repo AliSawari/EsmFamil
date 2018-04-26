@@ -69,7 +69,7 @@ IO.on('connection', (socket) => {
 
 // ROUTES HERE :
 
-app.get('/err', (req, res) => {
+app.get('/err_choose_name', (req, res) => {
   res.status(400).send('<h1>YOU MUST CHOOSE A NAME</h1>');
 });
 
