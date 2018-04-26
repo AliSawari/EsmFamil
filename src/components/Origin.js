@@ -41,8 +41,6 @@ class Origin extends Component {
         socket.emit('join', name);
         this.setState({name});
       } else {}
-      // socket.emit('join', name);
-      // this.setState({name});
     } else {
       var newName = prompt("please type your name...");
       if(newName){
@@ -51,9 +49,6 @@ class Origin extends Component {
           this.setState({name: newName});
           saveLocal(newName);
         }
-        // socket.emit('join', newName);
-        // this.setState({name: newName});
-        // saveLocal(newName);
       } else {
         window.location.href = "/err_choose_name";
       }
@@ -63,7 +58,7 @@ class Origin extends Component {
   mapUsers(){
     let {userList} = this.state;
     return userList.map((u, k) => {
-      return <li key={k} className="list-group-item">{u.name}</li>
+      return <li key={k} className="list-group-item"><b>{u.name}</b></li>
     });
   }
 
