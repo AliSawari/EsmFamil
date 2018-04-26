@@ -9,9 +9,9 @@ function getLocal(){
   return localStorage.getItem('name');
 }
 
-function find(name, userList){
-  for(let x in userList) {
-    if(name === userList[x].name){
+function find(name, list){
+  for(let x in list) {
+    if(name === list[x].name){
       return true;
     }
   }
