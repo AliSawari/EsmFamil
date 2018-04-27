@@ -16,7 +16,7 @@ export default function someRed(state = def, action){
         ...state.users,
         {
           ...action.user,
-          id: state.users.length + 1
+          id: state.users.length + 1,
           createdAt: Date.now()
         }
       ]

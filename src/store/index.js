@@ -3,7 +3,7 @@ import reducer from './../reducer';
 
 const store = createStore(reducer);
 
-var updates = store.subscibe(() => {
+var updates = store.subscribe(() => {
   let state = store.getState();
   console.log('State :: ', state);
 });
