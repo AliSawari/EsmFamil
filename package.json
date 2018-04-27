@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "webpack -w --mode=development",
     "pro": "webpack --mode=production",
-    "test": "webpack --config ./test/config.test.js -w  --mode=development",
+    "test": "jest",
     "start": "npm run pro && node server.js"
   },
   "dependencies": {
