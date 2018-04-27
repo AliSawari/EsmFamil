@@ -1,4 +1,6 @@
 # EsmFamil
+[![Build Status](https://travis-ci.org/AliSawari/EsmFamil.svg?branch=master)](https://travis-ci.org/AliSawari/EsmFamil)
+
 a simple Iranian game made into the web :)
 
 NOTE : this project is designed for fanavard contest
