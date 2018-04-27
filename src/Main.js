@@ -21,6 +21,3 @@ class Main extends Component {
 }
 
 Render(Main);
-
-// testing it out
-addUser("Travis", 8);
