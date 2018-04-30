@@ -40,7 +40,9 @@ class Origin extends Component {
       if(!find(name, userList)){
         socket.emit('join', name);
         this.setState({name});
-      } else {}
+      } else {
+        alert("User Name already Taken");
+      }
     } else {
       var newName = prompt("please type your name...");
       if(newName){
@@ -48,6 +50,8 @@ class Origin extends Component {
           socket.emit('join', newName);
           this.setState({name: newName});
           saveLocal(newName);
+        } else {
+          alert("User Name already Taken");
         }
       } else {
         window.location.href = "/err_choose_name";
