@@ -8,6 +8,10 @@ let state = store.getState();
 let {users} = state;
 
 describe('-- Store data types and values --', () => {
+  test('should be an array', () => {
+    expect(Array.isArray(users)).toBe(true);
+  });
+
   test('should have the length of 2', () => {
     expect(users).toHaveLength(2);
   });
@@ -15,9 +19,5 @@ describe('-- Store data types and values --', () => {
   test('should contain a specified user', () => {
     let u = users[1];
     expect(users).toContain(u);
-  });
-
-  test('should be an array', () => {
-    expect(Array.isArray(users)).toBe(true);
   });
 });
