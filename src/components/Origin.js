@@ -1,13 +1,6 @@
 import React, {Component} from 'react';
+import {saveLocal, getLocal} from './../actions';
 const socket = io();
-
-function saveLocal(name){
-  localStorage.setItem('name', name);
-}
-
-function getLocal(){
-  return localStorage.getItem('name');
-}
 
 function find(name, list){
   for(let x in list) {
