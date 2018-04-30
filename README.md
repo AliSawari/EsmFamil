@@ -3,13 +3,13 @@
 
 a simple Iranian game made into the web :)
 
-NOTE : this project is designed for fanavard contest
+#### NOTE : this project is designed for [fanavard]("https://fanavard.com") contest
 
 ## Run
 
-- `npm run d` runs the build-dev command for development builds. it also start webpack watch
-- `npm run p` runs the build-pro command for production build.
-- `npm start` runs `npm run p` and start the server with `node server.js`
+- `npm run dev` runs the webpack Development mode and also watch
+- `npm run pro` runs the webpack Production mode.
+- `npm start` runs `npm run pro` and start the server with `node server.js`
 
 ### Still Under Development
 Im Active on this one! and it will be ready soon!
