@@ -1,14 +1,6 @@
 import React, {Component} from 'react';
-import {saveLocal, getLocal} from './../actions';
+import {saveLocal, getLocal, findIn} from './../actions';
 const socket = io();
-
-function find(name, list){
-  for(let x in list) {
-    if(name === list[x].name){
-      return true;
-    }
-  }
-}
 
 class Origin extends Component {
   constructor(props){
@@ -30,7 +22,7 @@ class Origin extends Component {
     var {userList} = this.state;
     var name = getLocal();
     if(name){
-      if(!find(name, userList)){
+      if(!findIn(name, userList)){
         socket.emit('join', name);
         this.setState({name});
       } else {
@@ -39,7 +31,7 @@ class Origin extends Component {
     } else {
       var newName = prompt("please type your name...");
       if(newName){
-        if(!find(newName, userList)){
+        if(!findIn(newName, userList)){
           socket.emit('join', newName);
           this.setState({name: newName});
           saveLocal(newName);

@@ -4,7 +4,7 @@ function dis(a){
   store.dispatch(a);
 }
 
-export default function addUser (name, age) {
+function addUser (name, age) {
   dis({
     type: 'ADD',
     user : {
@@ -13,3 +13,5 @@ export default function addUser (name, age) {
     }
   });
 }
+
+export {addUser};

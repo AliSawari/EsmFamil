@@ -1,4 +1,4 @@
-import addUser from './addUser';
-import {saveLocal, getLocal} from './local';
+import {addUser} from './user';
+import {saveLocal, getLocal, findIn} from './local';
 
-export {addUser,saveLocal,getLocal};
+export {addUser,saveLocal,getLocal, findIn};
