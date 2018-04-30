@@ -6,12 +6,17 @@ function getLocal(){
   return localStorage.getItem('name');
 }
 
-function findIn(prop, list){
-  for(let x in list) {
-    if(prop === list[x].prop){
-      return true;
+function isThere(arr, target, item){
+  var a;
+  for(let x in arr){
+    if(arr[x][target] === item){
+      a = true;
+      return a;
+    } else {
+      a = false;
     }
   }
+  return a;
 }
 
-export {saveLocal, getLocal, findIn};
+export {saveLocal, getLocal, isThere};

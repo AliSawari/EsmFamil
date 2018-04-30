@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {saveLocal, getLocal, findIn} from './../actions';
+import {saveLocal, getLocal, isThere} from './../actions';
 const socket = io();
 
 class Origin extends Component {
@@ -18,28 +18,29 @@ class Origin extends Component {
     // binders :
   }
 
-  componentWillMount(){
+  componentDidMount(){
     var {userList} = this.state;
     var name = getLocal();
+
     if(name){
-      if(!findIn(name, userList)){
+      if(isThere(userList, 'name', name)){
+        return window.location.href = `/err?msg=username_already_taken?username=${name}`;
+      } else {
         socket.emit('join', name);
         this.setState({name});
-      } else {
-        alert("User Name already Taken");
       }
     } else {
       var newName = prompt("please type your name...");
+      newName = newName.toString();
       if(newName){
-        if(!findIn(newName, userList)){
+        if(isThere(userList, 'name', newName)){
+          return window.location.href = `/err?msg=username_already_taken?username=${newName}`;
+        } else {
           socket.emit('join', newName);
           this.setState({name: newName});
-          saveLocal(newName);
-        } else {
-          alert("User Name already Taken");
         }
       } else {
-        window.location.href = "/err_choose_name";
+        window.location.href = "/err?msg=choose_name";
       }
     }
   }

@@ -7,7 +7,7 @@ const store = createStore(reducer, compose(
 
 var updates = store.subscribe(() => {
   let state = store.getState();
-  console.log('State :: ', state);
+  console.log('State : ', state);
 });
 
 export default store;
