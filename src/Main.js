@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import {Origin} from './components';
-import {addUser} from './actions';
 
 const Render = C => {
 	return ReactDOM.render(<C/>, document.getElementById('root'));
