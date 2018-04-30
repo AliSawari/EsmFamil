@@ -1,10 +1,6 @@
 var def = {
-  users: [{
-    name: 'ali',
-    age: '123',
-    createdAt: 45459822,
-    id: 1
-  }]
+  users: [],
+  myName: undefined
 }
 
 export default function someRed(state = def, action){

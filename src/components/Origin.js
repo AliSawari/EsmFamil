@@ -18,33 +18,6 @@ class Origin extends Component {
     // binders :
   }
 
-  componentDidMount(){
-    var {userList} = this.state;
-    var name = getLocal();
-
-    if(name){
-      if(isThere(userList, 'name', name)){
-        return window.location.href = `/err?msg=username_already_taken?username=${name}`;
-      } else {
-        socket.emit('join', name);
-        this.setState({name});
-      }
-    } else {
-      var newName = prompt("please type your name...");
-      newName = newName.toString();
-      if(newName){
-        if(isThere(userList, 'name', newName)){
-          return window.location.href = `/err?msg=username_already_taken?username=${newName}`;
-        } else {
-          socket.emit('join', newName);
-          this.setState({name: newName});
-        }
-      } else {
-        window.location.href = "/err?msg=choose_name";
-      }
-    }
-  }
-
   mapUsers(){
     let {name, userList} = this.state;
     return userList.map((u, k) => {

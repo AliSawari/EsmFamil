@@ -13,8 +13,8 @@ describe('-- Store data types and values --', () => {
     expect(Array.isArray(users)).toBe(true);
   });
 
-  test('should have the length of 3', () => {
-    expect(users).toHaveLength(3);
+  test('should have the length of 2', () => {
+    expect(users).toHaveLength(2);
   });
 
   test('should contain a specified user', () => {
