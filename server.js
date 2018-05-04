@@ -62,15 +62,17 @@ IO.on('connection', (socket) => {
   socket.on('join', (name) => {
     addUser(name);
     tempName = name;
+    socket.emit('update', users);
   });
 
   socket.on('disconnect', () => {
     remUser(tempName);
+    socket.emit('update', users);
   });
 
-  setInterval(() => {
-    socket.emit('update', users);
-  }, 500);
+  // setInterval(() => {
+  //   socket.emit('update', users);
+  // }, 500);
 });
 
 // ROUTES HERE :

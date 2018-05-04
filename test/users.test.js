@@ -6,25 +6,25 @@ addUser('John', 45);
 addUser('chris', 23);
 
 let state = store.getState();
-let {users} = state;
+let {online} = state;
 
 describe('-- Store data types and values --', () => {
   test('should be an array', () => {
-    expect(Array.isArray(users)).toBe(true);
+    expect(Array.isArray(online)).toBe(true);
   });
 
   test('should have the length of 2', () => {
-    expect(users).toHaveLength(2);
+    expect(online).toHaveLength(2);
   });
 
   test('should contain a specified user', () => {
-    let u = users[1];
-    expect(users).toContain(u);
+    let u = online[1];
+    expect(online).toContain(u);
   });
 });
 
 describe('-- Finding Actually works', () => {
   test('find in array of objects', () => {
-    expect(isThere(users, 'name', 'chris')).toBe(true);
+    expect(isThere(online, 'name', 'chris')).toBe(true);
   });
 });

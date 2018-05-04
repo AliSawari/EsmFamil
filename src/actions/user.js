@@ -6,8 +6,8 @@ function dis(a){
 
 function addUser (name, age) {
   dis({
-    type: 'ADD',
-    user : {
+    type: 'ADD_ONLINE',
+    onlineUser : {
       name: name,
       age: age
     }
