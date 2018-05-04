@@ -6,10 +6,7 @@ const socket = io();
 class Origin extends Component {
   constructor(props){
     super(props);
-    this.state = {
-			name: null,
-      userList: []
-		}
+
     socket.on('update', (users) => {
       this.setState({
         userList: users
