@@ -5,12 +5,11 @@ import {addUser} from './../actions';
 class regName extends Component {
   constructor(props){
     super(props);
-    this.state = {}
   }
 
   handle(e){
     e.prevendDefault();
-    let name = e.target.name.value
+    let name = e.target.name.value;
     if(name.length > 2){
       addUser(name);
     } else {

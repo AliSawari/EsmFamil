@@ -17,20 +17,20 @@ class Origin extends Component {
   }
 
   mapUsers(){
-    let {name, userList} = this.state;
-    return userList.map((u, k) => {
+    let {myName, online} = this.state;
+    return online.map((u, k) => {
       return <li key={k} className="list-group-item"><b>{u.name}</b>
-      {u.name === name ? <span className="badge badge-success">You</span> : null}</li>
+      {u.name === myName ? <span className="badge badge-success">You</span> : null}</li>
     });
   }
 
   render(){
-    let {name, userList} = this.state;
+    let {myName, online} = this.state;
     return <div className="jumbotron">
-      <h3>Welcome to the game <b>{name}</b></h3>
+      {myName ? <h3>Welcome to the game <b>{myName}</b></h3> : <h3>Please choose a name</h3>}
       <hr />
         <button type="button" className="btn btn-primary">
-          Online <span className="badge badge-light">{userList.length}</span>
+          Online <span className="badge badge-light">{online.length}</span>
         </button>
         <h3>Players list : </h3>
         <ul className="list-group">
