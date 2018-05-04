@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {addUser} from './../actions';
 
 class regName extends Component {
   constructor(props){
@@ -9,6 +10,12 @@ class regName extends Component {
 
   handle(e){
     e.prevendDefault();
+    let name = e.target.name.value
+    if(name.length > 2){
+      addUser(name);
+    } else {
+      alert("Name should be more than 2 characters");
+    }
   }
 
 

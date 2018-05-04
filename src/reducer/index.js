@@ -9,6 +9,7 @@ var def = {
 
 export default function Reducer(state = def, action){
   switch(action.type){
+
     // adding to online users
     case 'ADD_ONLINE':
       return {
@@ -21,6 +22,24 @@ export default function Reducer(state = def, action){
             createdAt: Date.now()
           }
         ]
+      }
+
+    // remove user from the online users
+    case 'REM_USER':
+      let before = state.online;
+      let after = before.filter(u => {
+        return u.name != action.name
+      });
+      return {
+        ...state,
+        online: after
+      }
+
+    // registering name
+    case 'REG_NAME':
+      return {
+        ...state,
+        myName: action.myName
       }
   }
 }

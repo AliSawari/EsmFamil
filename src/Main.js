@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
-import {Origin} from './components';
+import {Origin, regName} from './components';
 import store from './store';
 import {Provider} from 'react-redux';
 
@@ -17,6 +17,7 @@ class Main extends Component {
 			<Provider store={store}>
 				<h1>Esm Famil</h1>
 				<p>welcome to guess-the-name game</p><hr />
+				<regName/> <hr />
 				<Origin/>
 			</Provider>
 		</div>

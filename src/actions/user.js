@@ -14,4 +14,11 @@ function addUser (name, age) {
   });
 }
 
-export {addUser};
+function updateOnline(users){
+  dis({
+    type: 'UPDATE_ONLINE',
+    online: users
+  });
+}
+
+export {addUser, updateOnline};

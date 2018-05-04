@@ -41,7 +41,5 @@ class Origin extends Component {
 }
 
 export default connect(s => {
-  return {
-    online: s.online
-  }
+  return s
 })(Origin);
