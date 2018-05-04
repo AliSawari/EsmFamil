@@ -4,7 +4,8 @@
 
 a simple Iranian game made into the web :)
 
-#### NOTE : this project is designed for [fanavard]("https://fanavard.com") contest
+#### NOTE :
+this project is designed for [fanavard]("https://fanavard.com") contest
 
 ## Run
 
