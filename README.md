@@ -1,5 +1,6 @@
 # EsmFamil
 [![Build Status](https://travis-ci.org/AliSawari/EsmFamil.svg?branch=master)](https://travis-ci.org/AliSawari/EsmFamil)
+[![dependencies Status](https://david-dm.org/AliSawari/EsmFamil/status.svg)](https://david-dm.org/AliSawari/EsmFamil)
 
 a simple Iranian game made into the web :)
 
