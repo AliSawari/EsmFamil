@@ -20,7 +20,7 @@ class Origin extends Component {
     let {name, userList} = this.state;
     return userList.map((u, k) => {
       return <li key={k} className="list-group-item"><b>{u.name}</b>
-      {u.name === name ? <span className="badge badge-success">It's You</span> : null}</li>
+      {u.name === name ? <span className="badge badge-success">You</span> : null}</li>
     });
   }
 

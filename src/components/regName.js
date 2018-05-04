@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 
 class regName extends Component {
   constructor(props){
@@ -20,3 +21,7 @@ class regName extends Component {
     </form>
   }
 }
+
+export default connect(s => {
+  return s;
+})(regName);
