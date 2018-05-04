@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import {saveLocal, getLocal, isThere} from './../actions';
 const socket = io();
 
@@ -42,4 +43,8 @@ class Origin extends Component {
   }
 }
 
-export default Origin;
+export default connect(s => {
+  return {
+    online: s.online
+  }
+})(Origin);

@@ -7,7 +7,8 @@ const http = require('http'),
       port = process.env.PORT || 3000,
       socketIO = require('socket.io'),
       IO = socketIO(server),
-      hbs = require('express-handlebars');
+      hbs = require('express-handlebars'),
+      {addUser} = require('./src/action');
 
 app.use(express.static(`${__dirname}/public`));
 
