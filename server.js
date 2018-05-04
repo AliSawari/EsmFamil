@@ -8,7 +8,9 @@ const http = require('http'),
       socketIO = require('socket.io'),
       IO = socketIO(server),
       hbs = require('express-handlebars'),
-      {addUser} = require('./src/action');
+      {addUser} = require('./src/action'),
+      store = require('./src/store');
+
 
 app.use(express.static(`${__dirname}/public`));
 
@@ -17,6 +19,8 @@ app.set('views', `${__dirname}/public`);
 app.engine('handlebars', hbs());
 app.set('view engine', 'handlebars');
 
+let state = store.getState();
+console.log(state);
 
 var users = [];
 
