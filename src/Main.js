@@ -14,9 +14,11 @@ class Main extends Component {
   }
   render(){
     return <div className="container">
-			<h1>Esm Famil</h1>
-			<p>welcome to guess-the-name game</p><hr />
-			<Origin/>
+			<Provider store={store}>
+				<h1>Esm Famil</h1>
+				<p>welcome to guess-the-name game</p><hr />
+				<Origin/>
+			</Provider>
 		</div>
   }
 }
