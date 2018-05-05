@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {saveLocal, getLocal, isThere} from './../actions';
+import {saveLocal, getLocal, isThere, updateOnline} from './../actions';
 const socket = io();
 
 class Origin extends Component {
@@ -8,16 +8,18 @@ class Origin extends Component {
     super(props);
 
     socket.on('update', (users) => {
-      this.setState({
-        userList: users
-      });
+      // this.setState({
+      //   userList: users
+      // });
+      updateOnline(users);
     });
 
     // binders :
+    this.mapUsers = this.mapUsers.bind(this); 
   }
 
   mapUsers(){
-    let {myName, online} = this.state;
+    let {myName, online} = this.props;
     return online.map((u, k) => {
       return <li key={k} className="list-group-item"><b>{u.name}</b>
       {u.name === myName ? <span className="badge badge-success">You</span> : null}</li>
@@ -25,8 +27,9 @@ class Origin extends Component {
   }
 
   render(){
-    let {myName, online} = this.state;
+    let {myName, online} = this.props;
     return <div className="jumbotron">
+      <h1>EsmFamil</h1>
       {myName ? <h3>Welcome to the game <b>{myName}</b></h3> : <h3>Please choose a name</h3>}
       <hr />
         <button type="button" className="btn btn-primary">
@@ -40,6 +43,4 @@ class Origin extends Component {
   }
 }
 
-export default connect(s => {
-  return s
-})(Origin);
+export default connect(s => s)(Origin);

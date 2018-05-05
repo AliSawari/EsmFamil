@@ -40,5 +40,12 @@ export default function Reducer(state = def, action){
         ...state,
         myName: action.myName
       }
+
+    // updating online users
+    case 'UPDATE_ONLINE':
+      return {
+        ...state,
+        online: action.online
+      }
   }
 }

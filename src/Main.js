@@ -1,27 +1,33 @@
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
-import {Origin, regName} from './components';
+import {render} from 'react-dom';
+import {Origin, RegName} from './components';
 import store from './store';
 import {Provider} from 'react-redux';
 
-const Render = C => {
-	return ReactDOM.render(<C/>, document.getElementById('root'));
-}
-
-class Main extends Component {
+class Container extends Component {
   constructor(props){
     super(props);
   }
+
   render(){
-    return <div className="container">
-			<Provider store={store}>
-				<h1>Esm Famil</h1>
-				<p>welcome to guess-the-name game</p><hr />
-				<regName/> <hr />
-				<Origin/>
-			</Provider>
-		</div>
+    return <div>
+      {this.props.children}
+    </div>
   }
 }
 
-Render(Main);
+class Main extends Component {
+  render(){
+    return <div>
+    <Provider store={store}>
+      <Container>
+        <Origin/>
+        <RegName/>
+      </Container>
+    </Provider>
+  </div>
+  }
+}
+
+
+render(<Main/>, document.getElementById('root'));

@@ -1,4 +1,7 @@
 import Origin from './Origin';
-import regName from './regName';
+import RegName from './RegName';
 
-export {Origin, regName};
+export {
+  Origin,
+  RegName
+};

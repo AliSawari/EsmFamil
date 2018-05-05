@@ -14,6 +14,13 @@ function addUser (name, age) {
   });
 }
 
+function remUser (name){
+  dis({
+    type: 'REM_USER',
+    user: name
+  });
+}
+
 function updateOnline(users){
   dis({
     type: 'UPDATE_ONLINE',
@@ -21,4 +28,4 @@ function updateOnline(users){
   });
 }
 
-export {addUser, updateOnline};
+export {addUser, remUser, updateOnline};

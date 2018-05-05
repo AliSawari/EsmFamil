@@ -9,6 +9,9 @@ const http = require('http'),
       IO = socketIO(server),
       hbs = require('express-handlebars');
 
+// custom moduels :
+const {users, addUser, remUser, update} = require('./user');
+
 
 app.use(express.static(`${__dirname}/public`));
 
@@ -17,43 +20,6 @@ app.set('views', `${__dirname}/public`);
 app.engine('handlebars', hbs());
 app.set('view engine', 'handlebars');
 
-
-var users = [];
-
-function update(){
-  console.log(users);
-}
-
-function addUser(u) {
-  var toAdd = {
-    name: u,
-    id: users.length + 1,
-    joinedAt: Date.now()
-  }
-  users.push(toAdd);
-  console.log(`${u} joined the chat`);
-  update();
-}
-
-function find(name){
-  for(let x in users) {
-    if(name === users[x].name){
-      return true;
-    }
-  }
-}
-
-function remUser(name){
-  let f = find(name);
-  if(f){
-    var newU = users.filter((u) => {
-      return u.name != name;
-    });
-    users = newU;
-    console.log(`${name} left the chat`);
-    update();
-  }
-}
 
 
 
@@ -70,10 +36,6 @@ IO.on('connection', (socket) => {
     remUser(tempName);
     socket.emit('update', users);
   });
-
-  // setInterval(() => {
-  //   socket.emit('update', users);
-  // }, 500);
 });
 
 // ROUTES HERE :
