@@ -2,7 +2,6 @@ var def = {
   myName: undefined,
   submitted: [],
   isGame: false,
-  inGame: false,
   players: [],
   online: []
 }
