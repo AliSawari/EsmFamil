@@ -1,3 +1,5 @@
+const {isThere} = require('./../src/actions');
+
 var users = [];
 
 function update(){
@@ -16,18 +18,18 @@ function addUser(u) {
   update();
 }
 
-function isThere(arr, target, item){
-  var a;
-  for(let x in arr){
-    if(arr[x][target] === item){
-      a = true;
-      return a;
-    } else {
-      a = false;
-    }
-  }
-  return a;
-}
+// function isThere(arr, target, item){
+//   var a;
+//   for(let x in arr){
+//     if(arr[x][target] === item){
+//       a = true;
+//       return a;
+//     } else {
+//       a = false;
+//     }
+//   }
+//   return a;
+// }
 
 function remUser(name){
   let f = isThere(users, 'name', name);
