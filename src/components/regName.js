@@ -8,12 +8,16 @@ class RegName extends Component {
   }
 
   handle(e){
+    let {myName} = this.props;
     e.prevendDefault();
     let name = e.target.name.value;
-    if(name.length > 2){
-      socket.emit('join', name);
-    } else {
-      alert("Name should be more than 2 characters");
+
+    if(!myName){
+      if(name.length > 2){
+        socket.emit('join', name);
+      } else {
+        alert("Name should be more than 2 characters");
+      }
     }
   }
 
@@ -27,4 +31,6 @@ class RegName extends Component {
   }
 }
 
-export default connect(s => s)(RegName);
+export default connect(state => {
+  return state;
+})(RegName);

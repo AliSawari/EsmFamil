@@ -10,7 +10,7 @@
     "pro": "webpack --mode=production",
     "test-w": "jest --watchAll",
     "test": "jest",
-    "start": "npm run pro && node server.js"
+    "start": "yarn pro && node server.js"
   },
   "engines": {
     "node": "^10.0.0"

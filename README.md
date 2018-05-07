@@ -9,9 +9,11 @@ this project is designed for [fanavard](https://fanavard.com) contest
 
 ## Run
 
-- `npm run dev` runs the webpack Development mode and also watch
-- `npm run pro` runs the webpack Production mode.
-- `npm start` runs `npm run pro` and start the server with `node server.js`
+- `yarn dev` runs the webpack Development mode and also watch
+- `yarn pro` runs the webpack Production mode.
+- `yarn start` runs `yarn pro` and start the server with `node server.js`
+
+NOTE : I used `yarn` here, you can use `npm`.
 
 ### Still Under Development
 Im Active on this one! and it will be ready soon!
