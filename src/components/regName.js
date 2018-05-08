@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
-const socket = io();
+import socket from './../socket';
 
 export default class RegName extends Component {
   constructor(props){
@@ -26,5 +25,3 @@ export default class RegName extends Component {
     </form>
   }
 }
-
-// export default connect(s => s)(RegName);

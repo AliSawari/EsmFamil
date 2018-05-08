@@ -9,10 +9,6 @@ const http = require('http'),
       IO = socketIO(server),
       hbs = require('express-handlebars');
 
-// custom moduels :
-const {users, addUser, remUser, update} = require('./user');
-
-
 app.use(express.static(`${__dirname}/public`));
 
 // config handlebars
@@ -20,22 +16,78 @@ app.set('views', `${__dirname}/public`);
 app.engine('handlebars', hbs());
 app.set('view engine', 'handlebars');
 
+// USER management
 
+var users = [];
+
+function update(){
+  console.log("Current Users :\n", users);
+}
+
+function isThere(arr, target, item){
+  var a;
+  for(let x in arr){
+    if(arr[x][target] === item){
+      a = true;
+      return a;
+    } else {
+      a = false;
+    }
+  }
+  return a;
+}
+
+function addUser(u, cb) {
+  let f = isThere(users, 'name', u);
+  if(f){
+    cb(false);
+  } else {
+    var toAdd = {
+      name: u,
+      id: users.length + 1,
+      joinedAt: Date.now()
+    }
+    users.push(toAdd);
+    console.log(`${u} joined the chat`);
+    update();
+    cb(true);
+  } 
+}
+
+function remUser(name){
+  let f = isThere(users, 'name', name);
+  if(f){
+    var newU = users.filter((u) => {
+      return u.name != name
+    });
+    users = newU;
+    console.log(`${name} left the chat`);
+    update();
+  }
+}
 
 
 IO.on('connection', (socket) => {
+  IO.emit('update', users);
   let tempName;
 
   socket.on('join', (name) => {
-    addUser(name);
-    tempName = name;
-    socket.emit('update', users);
+    addUser(name, (s) => {
+      if(s){
+        socket.emit('join_success', name);
+        tempName = name;
+        IO.emit('update', users);
+      } else {
+        socket.emit('join_fail');
+      }
+    });
   });
-
+  
   socket.on('disconnect', () => {
     remUser(tempName);
-    socket.emit('update', users);
+    IO.emit('update', users);
   });
+
 });
 
 // ROUTES HERE :

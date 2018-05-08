@@ -1,27 +1,36 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {saveLocal, getLocal, isThere, updateOnline} from './../actions';
-const socket = io();
+import { WSAENAMETOOLONG } from 'constants';
+import socket from './../socket';
 
 class Origin extends Component {
   constructor(props){
     super(props);
 
+    this.state = {
+      userList: [],
+      myName: undefined
+    }
+
     socket.on('update', (users) => {
-      // this.setState({
-      //   userList: users
-      // });
-      updateOnline(users);
+      this.setState({
+        userList: users
+      });
     });
+
+    socket.on('join_success', (name) => {
+      console.log("Success");
+      this.setState({myName: name});
+    });
+
 
     // binders :
     this.mapUsers = this.mapUsers.bind(this); 
   }
 
   mapUsers(){
-    let {myName, online} = this.props;
-    if(online){
-      return online.map((u, k) => {
+    let {myName, userList} = this.state;
+    if(userList){
+      return userList.map((u, k) => {
         return <li key={k} className="list-group-item"><b>{u.name}</b>
         {u.name === myName ? <span className="badge badge-success">You</span> : null}</li>
       });
@@ -29,13 +38,13 @@ class Origin extends Component {
   }
 
   render(){
-    let {myName, online} = this.props;
+    let {myName, userList} = this.state;
     return <div className="jumbotron">
       <h1>EsmFamil</h1>
       {myName ? <h3>Welcome to the game <b>{myName}</b></h3> : <h3>Please choose a name</h3>}
       <hr />
         <button type="button" className="btn btn-primary">
-          Online <span className="badge badge-light">{online ? online.length : 0}</span>
+          Online <span className="badge badge-light">{userList ? userList.length : 0}</span>
         </button>
         <h3>Players list : </h3>
         <ul className="list-group">
@@ -45,4 +54,4 @@ class Origin extends Component {
   }
 }
 
-export default connect(s => s)(Origin);
+export default Origin;
