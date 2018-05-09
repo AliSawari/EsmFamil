@@ -98,9 +98,10 @@ app.get('/err', (req, res) => {
   let errMsg = url.split('?msg=')[1];
   if(errMsg.includes('username_already_taken')){
     usedName = errMsg.split('?username=')[1];
-    return res.send(`Username: ${usedName} is already in use. please choose another one`);
-  } else if(errMsg.includes('choose_name')){
-    return res.send("Please choose a name.\nYou need a name to play the game");
+    return res.render('error', {
+      errMsg: `Username: ${usedName} is already in use.`,
+      tip: `Please Choose an available username`
+    });
   }
 });
 
