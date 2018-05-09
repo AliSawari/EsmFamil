@@ -14,7 +14,7 @@ class Container extends Component {
   }
 }
 
-class Main extends Component {
+export default class Main extends Component {
   render(){
     return <div>
       <Container>

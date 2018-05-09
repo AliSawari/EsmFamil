@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import { WSAENAMETOOLONG } from 'constants';
 import socket from './../socket';
 
 class Origin extends Component {
@@ -24,7 +23,7 @@ class Origin extends Component {
 
 
     // binders :
-    this.mapUsers = this.mapUsers.bind(this); 
+    this.mapUsers = this.mapUsers.bind(this);
   }
 
   mapUsers(){
