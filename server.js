@@ -51,7 +51,7 @@ function addUser(u, cb) {
     console.log(`${u} joined the chat`);
     update();
     cb(true);
-  } 
+  }
 }
 
 function remUser(name){
@@ -78,11 +78,11 @@ IO.on('connection', (socket) => {
         tempName = name;
         IO.emit('update', users);
       } else {
-        socket.emit('join_fail');
+        socket.emit('join_fail', name);
       }
     });
   });
-  
+
   socket.on('disconnect', () => {
     remUser(tempName);
     IO.emit('update', users);

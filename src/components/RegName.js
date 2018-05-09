@@ -4,15 +4,41 @@ import socket from './../socket';
 export default class RegName extends Component {
   constructor(props){
     super(props);
+    this.state = {
+      named: false
+    };
+
+
+    socket.on('join_success', () => {
+      this.setState({
+        named: true
+      });
+    });
+
+    socket.on('join_fail', (name) => {
+      window.location.href = `/err?msg=username_already_taken?username=${name}`;
+    });
+
+
+
+    // binders:
+    this.handle = this.handle.bind(this);
   }
 
   handle(event){
     event.preventDefault();
+    let {named} = this.state;
     let name = event.target.name.value;
-    if(name.length > 2){
-      socket.emit('join', name);
+    if(!named){
+      if(name.length > 2){
+        socket.emit('join', name);
+        event.target.name.value = '';
+      } else {
+        alert("Name should be more than 2 characters");
+        event.target.name.value = '';
+      }
     } else {
-      alert("Name should be more than 2 characters");
+      alert('You have already joined the game');
     }
   }
 
