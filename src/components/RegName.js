@@ -39,6 +39,7 @@ export default class RegName extends Component {
       }
     } else {
       alert('You have already joined the game');
+      event.target.name.value = '';
     }
   }
 
