@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import {render} from 'react-dom';
 import {Origin, RegName} from './components';
-import store from './store';
-import {Provider} from 'react-redux';
 
 class Container extends Component {
   constructor(props){
@@ -16,15 +14,13 @@ class Container extends Component {
   }
 }
 
-class Main extends Component {
+export default class Main extends Component {
   render(){
     return <div>
-    <Provider store={store}>
       <Container>
         <Origin/>
         <RegName/>
       </Container>
-    </Provider>
   </div>
   }
 }
