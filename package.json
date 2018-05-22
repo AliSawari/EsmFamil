@@ -1,6 +1,6 @@
 {
   "name": "EsmFamil",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "its a popular Iranian guess the name game . made into the web :)",
   "main": "server.js",
   "author": "Ali Sawari @AliSawari",
@@ -10,7 +10,7 @@
     "pro": "webpack --mode=production",
     "test-w": "jest --watchAll",
     "test": "jest",
-    "start": "npm pro && node server.js"
+    "start": "npm run pro && node ."
   },
   "engines": {
     "node": "^8.11.0"
