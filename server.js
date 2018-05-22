@@ -105,7 +105,7 @@ app.get('/err', (req, res) => {
   }
 });
 
-
+// starting the server
 server.listen(port, (err) => {
   if(err) return console.error(err);
   console.log(`Server is up on localhost:${port}`);
